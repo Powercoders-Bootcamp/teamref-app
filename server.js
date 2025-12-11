@@ -32,8 +32,8 @@ app.get("/", async (req, res) => {
     const tableCount = tableCountResult.rows[0].table_count;
 
     res.send(`
-      <h1>Hello, Powercoders! 🌟</h1>
-      <h2>Team Reference App</h2>
+      <h1>Hello, Powercoders!</h1>
+      <h2>Team Infra App</h2>
 
       <p>✔ Successfully connected to database!</p>
 
@@ -46,7 +46,7 @@ app.get("/", async (req, res) => {
     `);
   } catch (error) {
     res.send(`
-      <h1>Hello, Powercoders! 🌟</h1>
+      <h1>Hello, Powercoders!</h1>
       <h2>Team Reference App</h2>
       <p>❌ Database connection failed.</p>
       <pre>${error}</pre>
