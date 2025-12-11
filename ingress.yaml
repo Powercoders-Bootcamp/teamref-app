@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: teamref-ingress-3000
+  namespace: team-reference
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+    - hosts:
+        - nima.crazy-internet.ch
+      secretName: teamref-tls
+  rules:
+    - host: nima.crazy-internet.ch
+      http:
+        paths:
+          - path: /teamref-app
+            pathType: Prefix
+            backend:
+              service:
+                name: teamref-service-3000
+                port:
+                  number: 3000
+

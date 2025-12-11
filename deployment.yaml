@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamref-app
+  namespace: team-reference
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamref-app
+  template:
+    metadata:
+      labels:
+        app: teamref-app
+    spec:
+      imagePullSecrets:
+        - name: registry-credentials
+      containers:
+        - name: teamref-app
+          image: registry.nima.crazy-internet.ch/team-reference/teamref-app:latest
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: teamref-db-secret
+
